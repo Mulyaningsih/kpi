@@ -1,0 +1,17 @@
+<?php
+include '../../../koneksi.php';
+
+$id = mysqli_real_escape_string($koneksi, $_POST['id']);
+$id_kota = mysqli_real_escape_string($koneksi, $_POST['id']);
+$query = "DELETE from produk_elpiji WHERE id='$id' id_kota='$id_kota'";
+$destroyData = mysqli_query($koneksi, $query);
+
+if($destroyData){
+    echo '<script>localStorage.setItem("pesan", "success")</script>';
+    header("Refresh:0 ,url=../../index.php?page=produk_elpiji");
+}else{
+    echo '<script>localStorage.setItem("pesan","warning")</script>';
+    header("Refresh:0 ,url=../../index.php?page=produk_elpiji");
+}
+
+?>
